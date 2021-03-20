@@ -1,0 +1,13 @@
+[build]
+target = "aarch64-unknown-none"
+
+[target.aarch64-unknown-none]
+linker = "aarch64-none-elf-gcc"
+ar = "aarch64-none-elf-gcc"
+rustflags = [
+    "-Clink-arg=-Tlink.ld",
+    "-Clink-arg=-nostdlib",
+#    "-Clink-arg=-mcpu=cortex-a53",
+#    "-Ctarget-cpu=cortex-a53",
+    "-Ctarget-cpu=cortex-a72",
+]

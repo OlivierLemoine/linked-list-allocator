@@ -10,11 +10,9 @@ pub struct Alloc {
     pub end: u64,
 }
 impl Alloc {
-    pub const fn static_allocator() -> Self {
-        Alloc {
-            origin: 0x0000_1000,
-            end: 0x0080_0000,
-        }
+    pub const fn new(origin: u64, bytes: u64) -> Self {
+        let end = origin + bytes;
+        Alloc { origin, end }
     }
     pub fn init_allocator(&mut self) {
         let h = self.header_from_start();
